@@ -5,27 +5,27 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BitcoinsTransaction.DataAccess.Repository
+namespace BitcoinTransactions.DataAccess.Repository
 {
     public class TransactionRepository : IDisposable
     {
-        private TransactionContext txContext = new TransactionContext();
+        private BitcoinContext dbContext = new BitcoinContext();
 
         public async Task<InTransaction[]> GetLastInTxAsync()
         {
-            using (txContext)
-            using (var tran = txContext.Database.BeginTransaction())
+            using (dbContext)
+            using (var tran = dbContext.Database.BeginTransaction())
             {
                 try
                 {
-                    var result = await txContext.InTransactions.Where(x => x.Confirmations < 3 && !x.IsShown).ToArrayAsync();
+                    var result = await dbContext.InTransactions.Where(x => x.Confirmations < 3 && !x.IsShown).ToArrayAsync();
 
                     foreach (var item in result)
                     {
                         item.IsShown = true;
                     }
 
-                    await txContext.SaveChangesAsync();
+                    await dbContext.SaveChangesAsync();
                     tran.Commit();
                     return result;
                 }
@@ -40,20 +40,23 @@ namespace BitcoinsTransaction.DataAccess.Repository
 
         public async Task<ResultCode> SaveOutTxAsync(string address, decimal amount)
         {
-            using (txContext)
-            using (var tran = txContext.Database.BeginTransaction())
+            using (dbContext)
+            using (var tran = dbContext.Database.BeginTransaction())
             {
                 try
                 {
+                    var walletRepo = new WalletRepository();
+                    var wallet = await walletRepo.FindByAddressAsync(address);
+
                     var outTx = new OutTransaction
                     {
                         Address = address,
                         Amount = amount,
                         TimeStamp = DateTime.Now,
-                        WalletId = 1
+                        WalletId = wallet?.Id ?? 0
                     };
-                    txContext.OutTransactions.Add(outTx);
-                    await txContext.SaveChangesAsync();
+                    dbContext.OutTransactions.Add(outTx);
+                    await dbContext.SaveChangesAsync();
                     tran.Commit();
                     return ResultCode.Ok;
                 }
@@ -70,10 +73,10 @@ namespace BitcoinsTransaction.DataAccess.Repository
         {
             if (disposing)
             {
-                if (txContext != null)
+                if (dbContext != null)
                 {
-                    txContext.Dispose();
-                    txContext = null;
+                    dbContext.Dispose();
+                    dbContext = null;
                 }
             }
         }

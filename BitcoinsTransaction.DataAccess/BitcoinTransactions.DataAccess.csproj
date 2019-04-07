@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5D7DD1E-95F6-4633-A49D-F5F14628AB08}</ProjectGuid>
+    <ProjectGuid>{BBB9ABC4-7F22-4B51-8181-26A5E7783F53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitcoindClient</RootNamespace>
-    <AssemblyName>BitcoindClient</AssemblyName>
+    <RootNamespace>BitcoinsTransaction.DataAccess</RootNamespace>
+    <AssemblyName>BitcoinsTransaction.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,11 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,18 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitcoindCleintExt.cs" />
-    <Compile Include="BitcoindClient.cs" />
-    <Compile Include="Entities\Wallet.cs" />
-    <Compile Include="Models\JsonRpcError.cs" />
-    <Compile Include="Models\JsonRpcRequest.cs" />
-    <Compile Include="Models\JsonRpcResponse.cs" />
-    <Compile Include="Models\RpcErrorCode.cs" />
-    <Compile Include="Models\Methods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\TransactionRepository.cs" />
+    <Compile Include="Repository\WalletRepository.cs" />
+    <Compile Include="BitcoinContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitcoindClient\BitcoindClient.csproj">
+      <Project>{A5D7DD1E-95F6-4633-A49D-F5F14628AB08}</Project>
+      <Name>BitcoindClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitcoinTransactions.Entities\BitcoinTransactions.Entities.csproj">
+      <Project>{D6FF8690-928F-4273-9231-17F22251236B}</Project>
+      <Name>BitcoinTransactions.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

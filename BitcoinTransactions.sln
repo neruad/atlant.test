@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinTransactions.Api", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinTransactions.Entities", "BitcoinTransactions.Entities\BitcoinTransactions.Entities.csproj", "{D6FF8690-928F-4273-9231-17F22251236B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinsTransaction.DataAccess", "BitcoinsTransaction.DataAccess\BitcoinsTransaction.DataAccess.csproj", "{BBB9ABC4-7F22-4B51-8181-26A5E7783F53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinTransactions.DataAccess", "BitcoinsTransaction.DataAccess\BitcoinTransactions.DataAccess.csproj", "{BBB9ABC4-7F22-4B51-8181-26A5E7783F53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoindClient", "BitcoindClient\BitcoindClient.csproj", "{A5D7DD1E-95F6-4633-A49D-F5F14628AB08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoindClientTester", "BitcoindClientTester\BitcoindClientTester.csproj", "{14D8717C-A8DB-4248-A031-410309AFE643}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A5D7DD1E-95F6-4633-A49D-F5F14628AB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5D7DD1E-95F6-4633-A49D-F5F14628AB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5D7DD1E-95F6-4633-A49D-F5F14628AB08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D8717C-A8DB-4248-A031-410309AFE643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D8717C-A8DB-4248-A031-410309AFE643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D8717C-A8DB-4248-A031-410309AFE643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D8717C-A8DB-4248-A031-410309AFE643}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

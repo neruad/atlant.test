@@ -120,9 +120,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BitcoinTransactions\BitcoinsTransaction.DataAccess\BitcoinsTransaction.DataAccess.csproj">
+    <ProjectReference Include="..\BitcoinsTransaction.DataAccess\BitcoinTransactions.DataAccess.csproj">
       <Project>{BBB9ABC4-7F22-4B51-8181-26A5E7783F53}</Project>
-      <Name>BitcoinsTransaction.DataAccess</Name>
+      <Name>BitcoinTransactions.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\BitcoinTransactions\BitcoinTransactions.Entities\BitcoinTransactions.Entities.csproj">
       <Project>{D6FF8690-928F-4273-9231-17F22251236B}</Project>

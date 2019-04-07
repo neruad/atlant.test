@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BitcoinTransactions.DataAccess.Repository;
+using System;
+using System.Diagnostics;
 using System.Web.Http;
-using System.Web.Routing;
 
 namespace BitcoinTransactions.Api
 {
@@ -12,6 +10,20 @@ namespace BitcoinTransactions.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            SyncWallets();
+        }
+
+        protected void SyncWallets()
+        {
+            try
+            {
+                var walletRepo = new WalletRepository();
+                walletRepo.UpdateWallets();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }

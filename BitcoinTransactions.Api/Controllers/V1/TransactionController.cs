@@ -1,4 +1,4 @@
-﻿using BitcoinsTransaction.DataAccess.Repository;
+﻿using BitcoinTransactions.DataAccess.Repository;
 using BitcoinTransactions.Api.Models;
 using BitcoinTransactions.Api.Models.Request;
 using BitcoinTransactions.Api.Models.Response;

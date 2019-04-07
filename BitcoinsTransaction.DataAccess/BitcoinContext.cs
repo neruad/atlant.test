@@ -1,11 +1,11 @@
 ﻿using BitcoinTransactions.Entities;
 using System.Data.Entity;
 
-namespace BitcoinsTransaction.DataAccess
+namespace BitcoinTransactions.DataAccess
 {
-    class TransactionContext : DbContext
+    class BitcoinContext : DbContext
     {
-        public TransactionContext() : base("DBConnection")
+        public BitcoinContext() : base("DBConnection")
         {
         }
 
